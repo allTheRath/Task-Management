@@ -1,0 +1,83 @@
+﻿@model TaskAssignment.Models.Task
+
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Project.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.userType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.userType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeadLine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplitionPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplitionPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Completed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Completed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to Dashboard", "ProjectmanagerDashboard")
+</p>

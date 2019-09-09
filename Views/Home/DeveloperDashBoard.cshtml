@@ -1,0 +1,64 @@
+﻿@model List<TaskAssignment.Models.Task>
+@{
+    ViewBag.Title = "DeveloperDashBoard";
+}
+
+<h2>DashBoard Developer </h2>
+<table class="table">
+    <tr>
+        <th>
+            Task-title
+        </th>
+        <th>
+            Task-Details
+        </th>
+        <th>
+            DeadLine
+        </th>
+        <th>
+            Complition-Percentage
+        </th>
+        <th>
+            Is-completed
+        </th>
+        <th>
+            Notes
+        </th>
+        <th>
+            Priority
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeadLine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplitionPercentage)<span>%</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Completed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priority)
+            </td>
+            <td>
+                @Html.ActionLink("Update", "UpdateTask", new { taskId = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+

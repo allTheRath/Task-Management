@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@ViewBag.UserRole</h2>
+        @if (!ViewBag.HaveRole == true)
+        {
+            <div>
+                @Html.ActionLink("Are You Developer", "ChoseRole", new { role = "developer" });
+                @Html.ActionLink("Are You Project Manager", "ChoseRole", new { role = "projectmanager" });
+
+            </div>
+        }
+
+        @if (@ViewBag.UserRole == "developer")
+        {
+            <div>
+                @Html.ActionLink("Your Dashboard", "DeveloperDashBoard")
+            </div>
+        }
+        else if (ViewBag.UserRole == "projectmanager")
+        {
+            <div>
+                @Html.ActionLink("Your Dashboard", "ProjectmanagerDashboard")
+            </div>
+        }
+    </div>
+</div>

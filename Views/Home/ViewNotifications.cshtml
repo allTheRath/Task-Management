@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TaskAssignment.Models.NotificationViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Opened)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.notificationOptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NotificationUpdateId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opened)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeadLine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notificationOptions)
+            </td>
+            <td>
+                @if (item.notificationOptions.ToString() == "TaskCompletion")
+                {
+                    @Html.ActionLink("Details", "TaskDetails", new { taskId = item.NotificationUpdateId })
+                }
+                else if (item.notificationOptions.ToString() == "ProjectCompletion" || item.notificationOptions.ToString() == "ProjectPassedDeadline")
+                {
+                    @Html.ActionLink("Details", "ProjectDetails", new { projectId = item.NotificationUpdateId })
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>

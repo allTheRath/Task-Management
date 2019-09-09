@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TaskAssignment.Models.ProjectViewModel>
+
+<p>
+    @ViewBag.Notification
+    @Html.ActionLink("Check Updates", "GetProjectsPassedDeadline")
+    
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProject")
+</p>
+
+<p>
+    @Html.ActionLink("Order By DeadLine", "ProjectsByDeadLine")
+</p>
+
+<ol class="list-group">
+    <li>
+        <span>
+            @Html.DisplayNameFor(model => model.Title)
+        </span>
+        <span>
+            @Html.DisplayNameFor(model => model.Discription)
+        </span>
+        <span>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </span>
+        <span>
+            Tasks
+        </span>
+    </li>
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <div>
+                @Html.DisplayFor(modelItem => item.Title)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Discription)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.DeadLine)
+            </div>
+
+            @foreach (var t in item.Tasks)
+            {
+                <div>
+                    <h4>
+                        Task:
+                    </h4>
+                </div>
+                <div>
+                    <p>
+                        Title : -@t.TaskTitle
+                    </p>
+                    <p>
+                        Priority: -@t.priority
+                    </p>
+                    <p>
+                        Completed? : -@t.Completed,
+                    </p>
+                    <p>
+                        DeadLine: -@t.DeadLine
+                    </p>
+                    <p>
+                        Developer Mail: -@t.developer
+                    </p>
+                </div>
+            }
+            <div>
+                @Html.ActionLink("View Details", "ProjectDetails", new { projectId = item.Id })
+            </div>
+            <div>
+                @Html.ActionLink("Add Task", "AddTaskToProject", new { projectId = item.Id })
+            </div>
+            <div>
+                @Html.ActionLink("Delete Project", "DeleteProject", new { projectId = item.Id })
+            </div>
+        </li>
+    }
+
+</ol>

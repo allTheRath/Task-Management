@@ -1,0 +1,93 @@
+﻿@model TaskAssignment.Models.Task
+
+@if ((ViewBag.TaskFound == true && ViewBag.taskUpdated == false))
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Task</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaskTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Model.TaskTitle
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TaskDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Model.TaskDetails
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DeadLine, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Model.DeadLine
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ComplitionPercentage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ComplitionPercentage, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ComplitionPercentage, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Completed, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Completed)
+                            @Html.ValidationMessageFor(model => model.Completed, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                @if (Model.Completed == true)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.notes, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.notes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                        
+                    </div>
+                }
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+else if (ViewBag.taskUpdated == true)
+{
+    <h2>Task Successfully Updated.</h2>
+}
+else
+{
+    <h2>Task Not Found. Something went wrong</h2>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "DeveloperDashBoard")
+</div>

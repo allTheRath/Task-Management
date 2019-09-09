@@ -1,0 +1,70 @@
+﻿@model TaskAssignment.Models.Project
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeadLine)
+        </dd>
+        <dt>
+            Tasks
+        </dt>
+        <dd>
+            @foreach (var t in Model.tasks)
+            {
+                <div>
+                    Title: @t.TaskTitle
+                </div>
+                <div>
+                    Discription: @t.TaskDetails
+                </div>
+                <div>
+                    DeadLine: @t.DeadLine
+                </div>
+                <div>
+                    Complition: @t.ComplitionPercentage
+                </div>
+                <div>
+                    Completed: @t.Completed
+                </div>
+                <div>
+                    Priority: @t.priority
+                </div>
+                <div>
+                    @if (t.Completed)
+                    {
+                    <div>
+                        Something Went Wrong
+                    </div>
+                    }
+                </div>
+
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ProjectmanagerDashboard")
+</p>
