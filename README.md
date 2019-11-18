@@ -4,7 +4,7 @@
 
 ## Below is the given requirenments for this project.
 
-### A Task Management System is to help a company track the performance in their projects. “Project” contains many “Tasks”. There are multiple roles in this system. A Project Manager can create projects and tasks, and he can assign tasks to Developers.
+### A Task Management System is to help a company track the performance in their projects. “Project” contains many “Tasks” and there are multiple roles in this system. A Project Manager can create projects and tasks, and he can assign tasks to Developers.
 ###	Create the necessary classes using Entity Framework Code First and Authentication.
 ###	Create a User Manager class that has functions to add, delete and update users and roles, assign roles to users.
 ###	Create a Projects Manager class that contains functions to add, delete, update projects, along with any other helper functions. Those functions can only be accessed by project managers.
